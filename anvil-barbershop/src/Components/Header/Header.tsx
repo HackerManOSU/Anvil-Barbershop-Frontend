@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Header.css';
 
 const Header: React.FC = () => {
@@ -34,24 +34,15 @@ const Header: React.FC = () => {
     toggleMenu();
   };
 
-  const location = useLocation();
-
-  const specialPages = ['/hours', '/prices', '/faq'];
-
-  const borderColor = specialPages.includes(location.pathname) ? '#014421' : '#fff';
-
-
-
-
   return (
     <>
       <header
-        className={`header flex w-screen min-h-[90px] h-[8vh] justify-center bg-[black] px-4 py-1 relative z-20 ${
+        className={`header fixed flex w-screen min-h-[90px] h-[8vh] justify-center bg-anvilBackground px-4 py-1 relative z-20 ${
           isOpen
             ? 'border-none'
-            : `border-b-4 border-${borderColor} border-double`
+            : `border-b-4 border-white border-double`
         }`}
-        style={{ borderBottomColor: borderColor }}
+        style={{ borderBottomColor: 'white' }}
       >
         <nav className="flex justify-between w-[90%] max-w-[1200px] items-center">
           <div className="Logo flex justify-center items-center w-auto h-[80px]">
@@ -85,7 +76,7 @@ const Header: React.FC = () => {
             <li>
               <Link
                 to="/"
-                className="link hover:text-[#014421] block py-2 lg:py-0 font-bold"
+                className="link hover:text-anvilLightRed block py-2 lg:py-0 font-bold"
                 onClick={handleLinkClick}
               >
                 Home
@@ -94,7 +85,7 @@ const Header: React.FC = () => {
             <li>
               <Link
                 to="/hours"
-                className="link hover:text-[#014421] block py-2 lg:py-0 font-bold"
+                className="link hover:text-anvilLightRed block py-2 lg:py-0 font-bold"
                 onClick={handleLinkClick}
               >
                 Hours
@@ -103,7 +94,7 @@ const Header: React.FC = () => {
             <li>
               <Link
                 to="/services"
-                className="link hover:text-[#014421] block py-2 lg:py-0 font-bold"
+                className="link hover:text-anvilLightRed block py-2 lg:py-0 font-bold"
                 onClick={handleLinkClick}
               >
                 Services
@@ -112,7 +103,7 @@ const Header: React.FC = () => {
             <li>
               <Link
                 to="/faq"
-                className="link hover:text-[#014421] block py-2 lg:py-0 font-bold"
+                className="link hover:text-anvilLightRed block py-2 lg:py-0 font-bold"
                 onClick={handleLinkClick}
               >
                 FAQ
@@ -125,8 +116,8 @@ const Header: React.FC = () => {
       {/* Mobile Dropdown Menu */}
       {isOpen && (
         <ul
-          className={`header-mobile items-center justify-evenly h-[45vh] bg-black text-white text-center text-2xl absolute top-[90px] left-0 right-0 flex flex-col z-20 border-b-4 border-double dropdown-enter dropdown-menu`}
-          style={{ borderBottomColor: borderColor }}
+          className={`header-mobile items-center justify-evenly h-[45vh] bg-anvilBackground text-white text-center text-2xl absolute top-[90px] left-0 right-0 flex flex-col z-20 border-b-4 border-double dropdown-enter dropdown-menu`}
+          style={{ borderBottomColor: 'white' }}
         >
           <li>
             <Link
