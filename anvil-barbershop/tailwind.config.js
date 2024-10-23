@@ -5,7 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        anvilBackground: '#131313',
+        anvilRed: '#ff0000',
+        anvilLightRed: '#ff817e',
+      },
+    },
   },
   plugins: [],
 }
