@@ -4,7 +4,7 @@ import { Grid, Paper, Box, Container } from '@mui/material';
 const HoursPage: React.FC = () => {
     const Sunday = ['Sunday', 'Closed']
     const Monday = ['Monday', 'Closed']
-    const Tuesday = ['Tueday', '10:00 - 6:00']
+    const Tuesday = ['Tuesday', '10:00 - 6:00']
     const Wednesday = ['Wednesday', '10:00 - 6:00']
     const Thursday = ['Thursday', '10:00 - 6:00']
     const Friday = ['Friday', '10:00 - 6:00']
@@ -16,7 +16,7 @@ const HoursPage: React.FC = () => {
 
     return (
 
-        <div className='text-white bg-anvilBackground flex flex-col items-center min-h-[100vh]'>
+        <div className='text-white text-center bg-anvilBackground flex flex-col items-center min-h-[100vh]'>
             
             <h1 className='text-8xl text-[red] mt-12'>
                 Hours
@@ -25,6 +25,10 @@ const HoursPage: React.FC = () => {
             <h2 className='font-barber mt-4 text-3xl'>
                 Walk Ins Only
             </h2>
+
+            <div>
+
+            </div>
 
             <Container maxWidth="lg" className=''>
                 <Box sx={{ flexGrow: 1, padding: 0 }} >
@@ -41,6 +45,7 @@ const HoursPage: React.FC = () => {
                             background: '#131313',
                             color: 'white',
                             fontSize: '50px',
+                            fontFamily: 'Times New Roman',
                             textAlign: 'center',
                             fontWeight: '700',
 
