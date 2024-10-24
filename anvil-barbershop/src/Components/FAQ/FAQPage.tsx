@@ -21,6 +21,11 @@ const FAQPage: React.FC = () => {
         marginBottom: '16px',
     };
 
+    const titleTypographyStyles = {
+        color: 'black',
+        fontWeight: '700',
+    };
+
     const typographyStyles = {
         color: 'black',
     };
@@ -47,7 +52,7 @@ const FAQPage: React.FC = () => {
                     aria-controls="panel1a-content"
                     id="panel1a-header"
                 >
-                    <Typography sx={typographyStyles}>Do you guys accept debit or credit card?</Typography>
+                    <Typography sx={titleTypographyStyles}>Do you guys accept debit or credit card?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography sx={typographyStyles}>
@@ -66,7 +71,7 @@ const FAQPage: React.FC = () => {
                     aria-controls="panel2a-content"
                     id="panel2a-header"
                 >
-                    <Typography sx={typographyStyles}>What types of hair do you cut?</Typography>
+                    <Typography sx={titleTypographyStyles}>What types of hair do you cut?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography sx={typographyStyles}>
@@ -85,7 +90,7 @@ const FAQPage: React.FC = () => {
                     aria-controls="panel3a-content"
                     id="panel2a-header"
                 >
-                    <Typography sx={typographyStyles}>What services do you offer?</Typography>
+                    <Typography sx={titleTypographyStyles}>What services do you offer?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography sx={typographyStyles}>
@@ -104,7 +109,7 @@ const FAQPage: React.FC = () => {
                     aria-controls="panel4a-content"
                     id="panel2a-header"
                 >
-                    <Typography sx={typographyStyles}>Can I request a specific barber?</Typography>
+                    <Typography sx={titleTypographyStyles}>Can I request a specific barber?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography sx={typographyStyles}>
@@ -123,7 +128,7 @@ const FAQPage: React.FC = () => {
                     aria-controls="panel5a-content"
                     id="panel2a-header"
                 >
-                    <Typography sx={typographyStyles}>Do you offer shaves or beard trims?</Typography>
+                    <Typography sx={titleTypographyStyles}>Do you offer shaves or beard trims?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography sx={typographyStyles}>
@@ -142,7 +147,7 @@ const FAQPage: React.FC = () => {
                     aria-controls="panel6a-content"
                     id="panel2a-header"
                 >
-                    <Typography sx={typographyStyles}>How long has your barbershop been in business?</Typography>
+                    <Typography sx={titleTypographyStyles}>How long has your barbershop been in business?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography sx={typographyStyles}>
