@@ -20,7 +20,7 @@ const ServicesPage: React.FC = () => {
 
         <div className='text-white bg-anvilBackground flex flex-col items-center min-h-[100vh]'>
             
-            <h1 className='text-8xl text-[red] mt-12'>
+            <h1 className='text-6xl sm:text-8xl text-[red] mt-12'>
                 Services
             </h1>
             
@@ -42,9 +42,10 @@ const ServicesPage: React.FC = () => {
                             justifyContent: 'center',
                             background: '#131313',
                             color: 'white',
-                            fontSize: '50px',
+                            fontSize: { xs: '35px', sm: '50px' },
                             textAlign: 'center',
                             fontWeight: '700',
+                            fontFamily: 'Times New Roman',
 
                             }}
                         >

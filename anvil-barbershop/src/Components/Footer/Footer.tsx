@@ -23,7 +23,7 @@ const Footer: React.FC = () => {
 
             </div>
             
-            <h1 className='text-6xl font-bold pt-8 pb-12'>Anvil Barbershop, LLC</h1>
+            <h1 className='text-4xl sm:text-6xl font-bold pt-8 pb-12'>Anvil Barbershop, LLC</h1>
             
             <h2 className='text-lg pb-8'>345 new address st, Milwaukie, OR, 97222</h2>
             

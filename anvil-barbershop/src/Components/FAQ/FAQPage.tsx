@@ -18,6 +18,7 @@ const FAQPage: React.FC = () => {
         backgroundColor: '#eee',
         color: 'white',
         border: '1px solid red',
+        marginBottom: '16px',
     };
 
     const typographyStyles = {
