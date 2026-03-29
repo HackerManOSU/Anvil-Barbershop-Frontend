@@ -1,8 +1,21 @@
 html {
     background-color: #131313;
+    scroll-behavior: smooth;
 }
 
-body h1 {
+body {
+    margin: 0;
+    min-width: 320px;
+    color: #ffffff;
+    background:
+      linear-gradient(rgba(19, 19, 19, 0.9), rgba(19, 19, 19, 0.9)),
+            url('/images/razor.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+h1,
+h2,
+h3 {
     font-family: Rye;
 }
 
@@ -12,4 +25,44 @@ body h1 {
 
 .times-new-roman {
     font-family: 'Times New Roman', Times, serif;
+}
+
+.skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -100px;
+    background: #ff0000;
+    color: #ffffff;
+    padding: 0.7rem 1rem;
+    border-radius: 0.25rem;
+    z-index: 100;
+    font-weight: 700;
+}
+
+.skip-link:focus {
+    top: 1rem;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
 }

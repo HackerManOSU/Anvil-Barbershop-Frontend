@@ -1,89 +1,44 @@
 import React from 'react';
-import { Grid, Paper, Box, Container } from '@mui/material';
-
+ 
 
 const ServicesPage: React.FC = () => {
-
-    const Haircut = ['Haircut', '$30']
-    const Seniors65 = ['Seniors (65+)', '$25']
-    const BeardTrim = ['Beard Trim', '$20 - $25']
-    const StraightRazor = ['Straight Razor Shave', '$30']
-    const HaircutShave = ['Haircut + Shave', '$55']
-    const HaircutBeardTrim = ['Haircut + Beard Trim', '$50']
-    const AddStraightRazor = ['Add straight razor to any service', '$10']
-
-    const gridItemsTitle = ['Services', 'Pricing']
-
-    const gridItems = [Haircut[0], Haircut[1], Seniors65[0], Seniors65[1], BeardTrim[0], BeardTrim[1], StraightRazor[0], StraightRazor[1], HaircutShave[0], HaircutShave[1], HaircutBeardTrim[0], HaircutBeardTrim[1], AddStraightRazor[0], AddStraightRazor[1] ]
+    const services = [
+        { name: 'Haircut', price: '$30' },
+        { name: 'Haircut (with fade)', price: '$35' },
+        { name: 'Seniors (65+)', price: '$25' },
+        { name: 'Beard Trim', price: '$20 - $25' },
+        { name: 'Straight Razor Shave', price: '$30' },
+        { name: 'Haircut + Shave', price: '$55' },
+        { name: 'Haircut + Beard Trim', price: '$50' },
+        { name: 'Add straight razor to any service', price: '$10' },
+    ];
 
     return (
+        <section className='text-white bg-anvilBackground flex flex-col items-center min-h-[100vh] px-3 sm:px-5 pb-16'>
+            <h1 className='text-5xl sm:text-7xl text-anvilRed mt-12 text-center'>Services</h1>
 
-        <div className='text-white bg-anvilBackground flex flex-col items-center min-h-[100vh]'>
-            
-            <h1 className='text-6xl sm:text-8xl text-[red] mt-12'>
-                Services
-            </h1>
-            
-            <h2 className='font-barber mt-4 text-4xl'>
-                CASH ONLY
-            </h2>
+            <p className='font-barber mt-4 mb-10 text-3xl sm:text-4xl text-center'>Cash Only</p>
 
-            <Container maxWidth="lg" className=''>
-                <Box sx={{ flexGrow: 1, padding: 0 }} >
-                    <Grid container spacing={2}>
-                    {gridItemsTitle.map((item, index) => (
-                        <Grid item xs={6} md={6} key={index} className='border-b-8 border-double'>
-                        <Paper
-                            elevation={1}
-                            sx={{
-                            p: 2,
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            background: '#131313',
-                            color: 'white',
-                            fontSize: { xs: '35px', sm: '50px' },
-                            textAlign: 'center',
-                            fontWeight: '700',
-                            fontFamily: 'Times New Roman',
-
-                            }}
-                        >
-                            {item}
-                        </Paper>
-                        </Grid>
-                    ))}
-                    </Grid>
-                </Box>
-            </Container>
-
-            <Container maxWidth="lg">
-                <Box sx={{ flexGrow: 1, padding: 2 }}>
-                    <Grid container spacing={2} >
-                    {gridItems.map((item, index) => (
-                        <Grid item xs={6} md={6} key={index} className='border-b-2' >
-                        <Paper
-                            elevation={1}
-                            sx={{
-                            p: 2,
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            background: '#131313',
-                            color: 'white',
-                            fontSize: '30px',
-                            textAlign: 'center',
-                            }}
-                        >
-                            {item}
-                        </Paper>
-                        </Grid>
-                    ))}
-                    </Grid>
-                </Box>
-            </Container>
-
-        </div>
+            <div className='w-full max-w-[1000px] overflow-x-auto'>
+                <table className='w-full border-collapse text-left'>
+                    <caption className='sr-only'>Anvil Barbershop services and pricing</caption>
+                    <thead>
+                        <tr className='border-b-4 border-double border-white'>
+                            <th scope='col' className='times-new-roman text-3xl sm:text-4xl py-4 px-4'>Service</th>
+                            <th scope='col' className='times-new-roman text-3xl sm:text-4xl py-4 px-4 text-right'>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {services.map((service) => (
+                            <tr key={service.name} className='border-b border-white/40'>
+                                <th scope='row' className='font-normal text-lg sm:text-2xl py-4 px-4'>{service.name}</th>
+                                <td className='text-lg sm:text-2xl py-4 px-4 text-right whitespace-nowrap'>{service.price}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
+            </div>
+        </section>
 
     );
 };

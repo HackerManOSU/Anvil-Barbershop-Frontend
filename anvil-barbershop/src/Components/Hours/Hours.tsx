@@ -1,103 +1,44 @@
 import React from 'react';
-import { Grid, Paper, Box, Container } from '@mui/material';
 
 const HoursPage: React.FC = () => {
-    const Sunday = ['Sunday', 'Closed'];
-    const Monday = ['Monday', 'Closed'];
-    const Tuesday = ['Tuesday', '10:00 - 6:00'];
-    const Wednesday = ['Wednesday', '10:00 - 6:00'];
-    const Thursday = ['Thursday', '10:00 - 6:00'];
-    const Friday = ['Friday', '10:00 - 6:00'];
-    const Saturday = ['Saturday', '10:00 - 4:00'];
-
-    const gridItemsTitle = ['Day', 'Hours'];
-
-    const gridItems = [ 
-        Sunday[0], Sunday[1], 
-        Monday[0], Monday[1], 
-        Tuesday[0], Tuesday[1], 
-        Wednesday[0], Wednesday[1], 
-        Thursday[0], Thursday[1], 
-        Friday[0], Friday[1], 
-        Saturday[0], Saturday[1]
+    const schedule = [
+        { day: 'Sunday', hours: 'Closed' },
+        { day: 'Monday', hours: '10:00 - 4:00' },
+        { day: 'Tuesday', hours: '10:00 - 4:00' },
+        { day: 'Wednesday', hours: '10:00 - 4:00' },
+        { day: 'Thursday', hours: '10:00 - 4:00' },
+        { day: 'Friday', hours: '10:00 - 4:00' },
+        { day: 'Saturday', hours: 'Closed' },
     ];
 
     return (
+        <section className='text-white text-center bg-anvilBackground flex flex-col items-center min-h-[100vh] px-3 sm:px-5 pb-16'>
+            <h1 className='text-5xl sm:text-7xl text-anvilRed mt-12'>Hours</h1>
 
-        <div className='text-white text-center bg-anvilBackground flex flex-col items-center min-h-[100vh]'>
-            
-            <h1 className='text-8xl text-[red] mt-12'>
-                Hours
-            </h1>
-            
-            <h2 className='font-barber mt-4 text-3xl'>
-                Walk Ins Only
-            </h2>
+            <p className='font-barber mt-4 mb-10 text-3xl sm:text-4xl'>Walk-Ins Only</p>
 
-            <div>
-
+            <div className='w-full max-w-[900px] overflow-x-auto'>
+                <table className='w-full border-collapse text-left'>
+                    <caption className='sr-only'>Weekly opening hours for Anvil Barbershop</caption>
+                    <thead>
+                        <tr className='border-b-4 border-double border-white'>
+                            <th scope='col' className='times-new-roman text-3xl sm:text-4xl py-4 px-4'>Day</th>
+                            <th scope='col' className='times-new-roman text-3xl sm:text-4xl py-4 px-4 text-right'>Hours</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {schedule.map((entry) => (
+                            <tr key={entry.day} className='border-b border-white/40'>
+                                <th scope='row' className='font-normal text-lg sm:text-2xl py-4 px-4'>{entry.day}</th>
+                                <td className='text-lg sm:text-2xl py-4 px-4 text-right whitespace-nowrap'>{entry.hours}</td>
+                            </tr>
+                        ))}
+                    </tbody>
+                </table>
             </div>
 
-            <Container maxWidth="lg" className='flex flex-row items-center justify-center'>
-                <Box sx={{ flexGrow: 1, padding: 0 }} >
-                    <Grid container spacing={2} justifyContent="center">
-                    {gridItemsTitle.map((item, index) => (
-                        <Grid item xs={6} md={6} key={index} className='border-b-8 border-double'>
-                        <Paper
-                            elevation={1}
-                            sx={{
-                            p: 2,
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            background: '#131313',
-                            color: 'white',
-                            fontSize: '50px',
-                            fontFamily: 'Times New Roman',
-                            textAlign: 'center',
-                            fontWeight: '700',
-
-                            }}
-                        >
-                            {item}
-                        </Paper>
-                        </Grid>
-                    ))}
-                    </Grid>
-                </Box>
-            </Container>
-
-            <Container maxWidth="lg">
-                <Box sx={{ flexGrow: 1, padding: 2 }}>
-                    <Grid container spacing={2} justifyContent="center" >
-                    {gridItems.map((item, index) => (
-                        <Grid item xs={6} md={6} key={index} className='border-b-2' >
-                        <Paper
-                            elevation={1}
-                            sx={{
-                            p: 2,
-                            display: 'flex',
-                            alignItems: 'center',
-                            justifyContent: 'center',
-                            background: '#131313',
-                            color: 'white',
-                            fontSize: '30px',
-                            textAlign: 'center',
-                            }}
-                        >
-                            {item}
-                        </Paper>
-                        </Grid>
-                    ))}
-                    </Grid>
-                </Box>
-            </Container>
-
-            <h1 className='text-8xl my-12'>
-                Cash Only
-            </h1>
-
-        </div>
+            <p className='text-4xl sm:text-6xl my-12 font-barber'>Cash Only</p>
+        </section>
 
     );
 };

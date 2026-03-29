@@ -1,69 +1,55 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 import './Header.css';
 
 const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => {
-    if (isOpen) {
-      // Set up to trigger slideUp animation
-      const dropdownMenu = document.querySelector('.dropdown-menu');
-      if (dropdownMenu) {
-        dropdownMenu.classList.add('dropdown-exit');
-        setTimeout(() => {
-          setIsOpen(false);
-          const dropdownMenuAfterTimeout = document.querySelector('.dropdown-menu');
-          if (dropdownMenuAfterTimeout) {
-            dropdownMenuAfterTimeout.classList.remove('dropdown-exit');
-          }
-        }, 100); // Duration of the slideUp animation
-      }
-    } else {
-      setIsOpen(true);
-    }
-  };
+  const toggleMenu = () => setIsOpen((prev) => !prev);
 
   const handleLinkClick = () => {
     if (window.innerWidth < 1024) {
-      toggleMenu();
+      setIsOpen(false);
     }
   };
 
-  const handleButtonClick = () => {
-    toggleMenu();
-  };
+  useEffect(() => {
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener('keydown', onKeyDown);
+
+    return () => {
+      window.removeEventListener('keydown', onKeyDown);
+    };
+  }, []);
+
+  const linkClassName = ({ isActive }: { isActive: boolean }) =>
+    `link block py-2 font-bold transition-colors duration-300 ${
+      isActive ? 'text-anvilRed' : 'text-white hover:text-anvilLightRed'
+    }`;
 
   return (
     <>
       <header
-        className={`header fixed flex w-screen min-h-[90px] h-[8vh] justify-center bg-anvilBackground px-4 py-1 relative z-20 ${
-          isOpen
-            ? 'border-none'
-            : `border-b-4 border-white border-double`
-        }`}
-        style={{ borderBottomColor: 'white' }}
+        className="header fixed top-0 left-0 right-0 min-h-[90px] bg-anvilBackground border-b-4 border-double border-white z-30"
       >
-        <nav className="flex justify-between w-[90%] max-w-[1200px] items-center">
-          <div className="Logo flex justify-center items-center w-auto h-[80px]">
-
-            <h1 className='text-white text-3xl'>Anvil Barbershop</h1>
-
-            {/*
-            <Link to="/" className="hover:text-black block">
-              <img
-                src="../JackLogoWhite.png"
-                alt="Jacks Junk Removal Logo"
-                className="h-[100%]"
-              />
-            </Link>
-            */}
-          </div>
+        <nav className="mx-auto flex min-h-[90px] w-[92%] max-w-[1200px] items-center justify-between" aria-label="Primary">
+          <Link to="/" className="text-white text-2xl sm:text-3xl font-bold tracking-wide hover:text-anvilLightRed transition-colors duration-300">
+            Anvil Barbershop
+          </Link>
 
           <div className="block lg:hidden">
             <button
-              onClick={handleButtonClick}
+              onClick={toggleMenu}
               className={`menu-button ${isOpen ? 'is-active' : ''}`}
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+              aria-expanded={isOpen}
+              aria-controls="mobile-navigation"
+              type="button"
             >
               <div className="bar"></div>
               <div className="bar"></div>
@@ -72,42 +58,43 @@ const Header: React.FC = () => {
           </div>
 
           {/* Desktop Menu */}
-          <ul className="hidden lg:flex justify-evenly text:lg text-center items-center text-white w-full lg:w-[60%]">
+          <ul className="hidden lg:flex justify-evenly text-center items-center w-full lg:w-[60%]" role="list">
             <li>
-              <Link
+              <NavLink
                 to="/"
-                className="link hover:text-anvilLightRed block py-2 lg:py-0 font-bold"
+                className={linkClassName}
                 onClick={handleLinkClick}
+                end
               >
                 Home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/hours"
-                className="link hover:text-anvilLightRed block py-2 lg:py-0 font-bold"
+                className={linkClassName}
                 onClick={handleLinkClick}
               >
                 Hours
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/services"
-                className="link hover:text-anvilLightRed block py-2 lg:py-0 font-bold"
+                className={linkClassName}
                 onClick={handleLinkClick}
               >
                 Services
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
+              <NavLink
                 to="/faq"
-                className="link hover:text-anvilLightRed block py-2 lg:py-0 font-bold"
+                className={linkClassName}
                 onClick={handleLinkClick}
               >
                 FAQ
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </nav>
@@ -115,47 +102,30 @@ const Header: React.FC = () => {
 
       {/* Mobile Dropdown Menu */}
       {isOpen && (
-        <ul
-          className={`header-mobile items-center justify-evenly h-[45vh] bg-anvilBackground text-white text-center text-2xl absolute top-[90px] left-0 right-0 flex flex-col z-20 border-b-4 border-double dropdown-enter dropdown-menu`}
-          style={{ borderBottomColor: 'white' }}
-        >
-          <li>
-            <Link
-              to="/"
-              className="link hover:text-[red] block py-2 font-bold"
-              onClick={handleLinkClick}
-            >
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/hours"
-              className="link hover:text-[red] block py-2 font-bold"
-              onClick={handleLinkClick}
-            >
-              Hours
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/services"
-              className="link hover:text-[red] block py-2 font-bold"
-              onClick={handleLinkClick}
-            >
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link
-              to="/faq"
-              className="link hover:text-[red] block py-2 font-bold"
-              onClick={handleLinkClick}
-            >
-              FAQ
-            </Link>
-          </li>
-        </ul>
+        <nav className="header-mobile fixed top-[90px] left-0 right-0 bg-anvilBackground border-b-4 border-double border-white z-20" aria-label="Mobile">
+          <ul id="mobile-navigation" className="items-center justify-evenly min-h-[40vh] text-center text-2xl flex flex-col dropdown-enter" role="list">
+            <li>
+              <NavLink to="/" className={linkClassName} onClick={handleLinkClick} end>
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/hours" className={linkClassName} onClick={handleLinkClick}>
+                Hours
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/services" className={linkClassName} onClick={handleLinkClick}>
+                Services
+              </NavLink>
+            </li>
+            <li>
+              <NavLink to="/faq" className={linkClassName} onClick={handleLinkClick}>
+                FAQ
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
       )}
     </>
   );

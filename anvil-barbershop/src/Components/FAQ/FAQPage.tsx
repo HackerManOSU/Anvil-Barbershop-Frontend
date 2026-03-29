@@ -31,17 +31,12 @@ const FAQPage: React.FC = () => {
     };
 
     return (
-        <div className='text-white bg-anvilBackground flex flex-col items-center min-h-[100vh]'>
-            
-            <h1 className='text-8xl text-[red] mt-12'>
-                Hours
-            </h1>
-            
-            <h2 className='font-barber mt-4 mb-12 text-3xl'>
-                Walk Ins Only
-            </h2>
+        <section className='text-white bg-anvilBackground flex flex-col items-center min-h-[100vh] px-3 sm:px-5 pb-16'>
+            <h1 className='text-5xl sm:text-7xl text-anvilRed mt-12 text-center'>FAQ</h1>
 
-            <div className='w-[80%] max-w-[1000px]'>
+            <p className='font-barber mt-4 mb-12 text-3xl text-center'>Helpful answers before your visit</p>
+
+            <div className='w-full max-w-[1000px]'>
             <Accordion
                 expanded={expanded === "panel1"}
                 onChange={handleChange("panel1")}
@@ -88,32 +83,13 @@ const FAQPage: React.FC = () => {
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel3a-content"
-                    id="panel2a-header"
+                    id="panel3a-header"
                 >
                     <Typography sx={titleTypographyStyles}>What services do you offer?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography sx={typographyStyles}>
                         We offer traditional haircuts, beard trims, and straight razor shaves. We specialize in classic and timeless styles, but can accommodate modern cuts as well.                    
-                    </Typography>
-                </AccordionDetails>
-            </Accordion>
-
-            <Accordion
-                expanded={expanded === "panel4"}
-                onChange={handleChange("panel4")}
-                sx={accordionStyles}
-                >
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel4a-content"
-                    id="panel2a-header"
-                >
-                    <Typography sx={titleTypographyStyles}>Can I request a specific barber?</Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                    <Typography sx={typographyStyles}>
-                        Yes, if you have a preferred barber, let us know when you arrive, and we’ll do our best to accommodate your request.
                     </Typography>
                 </AccordionDetails>
             </Accordion>
@@ -126,7 +102,7 @@ const FAQPage: React.FC = () => {
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel5a-content"
-                    id="panel2a-header"
+                    id="panel5a-header"
                 >
                     <Typography sx={titleTypographyStyles}>Do you offer shaves or beard trims?</Typography>
                 </AccordionSummary>
@@ -145,19 +121,19 @@ const FAQPage: React.FC = () => {
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                     aria-controls="panel6a-content"
-                    id="panel2a-header"
+                    id="panel6a-header"
                 >
                     <Typography sx={titleTypographyStyles}>How long has your barbershop been in business?</Typography>
                 </AccordionSummary>
                 <AccordionDetails>
                     <Typography sx={typographyStyles}>
-                        We have over 10 years of experience providing high-quality haircuts and grooming services to our community.                    
+                        We have over 15 years of experience providing high-quality haircuts and grooming services to our community.                    
                     </Typography>
                 </AccordionDetails>
             </Accordion>
             </div>
 
-        </div>
+        </section>
 
     );
 };

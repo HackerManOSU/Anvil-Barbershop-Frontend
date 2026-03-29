@@ -11,15 +11,18 @@ function App() {
 
   return (
     <Router>
-      <div>
-      <Header />
-        
-      <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/hours" element={<HoursPage />} />
-          <Route path="/services" element={<ServicesPage />} />
-          <Route path="/faq" element={<FAQPage />} />
-        </Routes>
+      <div className="min-h-screen flex flex-col">
+        <a href="#main-content" className="skip-link">Skip to main content</a>
+        <Header />
+
+        <main id="main-content" className="flex-1 pt-[90px]" tabIndex={-1}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/hours" element={<HoursPage />} />
+            <Route path="/services" element={<ServicesPage />} />
+            <Route path="/faq" element={<FAQPage />} />
+          </Routes>
+        </main>
 
         <Footer />
       </div>
